@@ -1,0 +1,9 @@
+C:\Users\246 Bangur Park\documents\visual studio 2010\Projects\SPACEX\SPACEX\bin\Debug\SPACEX.exe
+C:\Users\246 Bangur Park\documents\visual studio 2010\Projects\SPACEX\SPACEX\bin\Debug\SPACEX.pdb
+C:\Users\246 Bangur Park\documents\visual studio 2010\Projects\SPACEX\SPACEX\obj\x86\Debug\WindowsFormsApplication1.Form1.resources
+C:\Users\246 Bangur Park\documents\visual studio 2010\Projects\SPACEX\SPACEX\obj\x86\Debug\WindowsFormsApplication1.Properties.Resources.resources
+C:\Users\246 Bangur Park\documents\visual studio 2010\Projects\SPACEX\SPACEX\obj\x86\Debug\SPACEX.csproj.GenerateResource.Cache
+C:\Users\246 Bangur Park\documents\visual studio 2010\Projects\SPACEX\SPACEX\obj\x86\Debug\SPACEX.exe
+C:\Users\246 Bangur Park\documents\visual studio 2010\Projects\SPACEX\SPACEX\obj\x86\Debug\SPACEX.pdb
+C:\Users\246 Bangur Park\documents\visual studio 2010\Projects\SPACEX\SPACEX\obj\x86\Debug\SPACEX.csprojResolveAssemblyReference.cache
+C:\Users\246 Bangur Park\documents\visual studio 2010\Projects\SPACEX\SPACEX\obj\x86\Debug\System.Windows.Forms.AGauge.resources
