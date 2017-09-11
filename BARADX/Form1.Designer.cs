@@ -44,12 +44,12 @@
             System.Windows.Forms.AGaugeLabel aGaugeLabel2 = new System.Windows.Forms.AGaugeLabel();
             System.Windows.Forms.AGaugeLabel aGaugeLabel3 = new System.Windows.Forms.AGaugeLabel();
             this.maps_w = new System.Windows.Forms.WebBrowser();
-            this.latitude = new System.Windows.Forms.TextBox();
-            this.longitude = new System.Windows.Forms.TextBox();
+            this.latitude_disp = new System.Windows.Forms.TextBox();
+            this.longitude_disp = new System.Windows.Forms.TextBox();
             this.connect_button = new System.Windows.Forms.Button();
             this.Get_Port_1 = new System.Windows.Forms.ComboBox();
             this.Get_Port_2 = new System.Windows.Forms.ComboBox();
-            this.locate = new System.Windows.Forms.Button();
+            this.locate_button = new System.Windows.Forms.Button();
             this.gauge_timer = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.th_disp = new System.Windows.Forms.Label();
@@ -63,9 +63,13 @@
             this.cent_indicator = new System.Windows.Forms.Label();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.sat_img = new System.Windows.Forms.PictureBox();
+            this.time_disp = new System.Windows.Forms.TextBox();
+            this.battery_voltage = new System.Windows.Forms.TextBox();
             this.thrust_gauge = new System.Windows.Forms.AGauge();
             this.altitude_gauge = new System.Windows.Forms.AGauge();
             this.speed_gauge = new System.Windows.Forms.AGauge();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sat_img)).BeginInit();
@@ -85,21 +89,21 @@
             this.maps_w.Url = new System.Uri("https://www.google.co.in/maps/@?api=1&map_action=map", System.UriKind.Absolute);
             this.maps_w.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.maps_w_DocumentCompleted);
             // 
-            // latitude
+            // latitude_disp
             // 
-            this.latitude.Location = new System.Drawing.Point(200, 441);
-            this.latitude.Name = "latitude";
-            this.latitude.Size = new System.Drawing.Size(77, 20);
-            this.latitude.TabIndex = 7;
-            this.latitude.TextChanged += new System.EventHandler(this.latitude_TextChanged);
+            this.latitude_disp.Location = new System.Drawing.Point(200, 441);
+            this.latitude_disp.Name = "latitude_disp";
+            this.latitude_disp.Size = new System.Drawing.Size(77, 20);
+            this.latitude_disp.TabIndex = 7;
+            this.latitude_disp.TextChanged += new System.EventHandler(this.latitude_TextChanged);
             // 
-            // longitude
+            // longitude_disp
             // 
-            this.longitude.Location = new System.Drawing.Point(297, 441);
-            this.longitude.Name = "longitude";
-            this.longitude.Size = new System.Drawing.Size(77, 20);
-            this.longitude.TabIndex = 8;
-            this.longitude.TextChanged += new System.EventHandler(this.longitude_TextChanged);
+            this.longitude_disp.Location = new System.Drawing.Point(297, 441);
+            this.longitude_disp.Name = "longitude_disp";
+            this.longitude_disp.Size = new System.Drawing.Size(77, 20);
+            this.longitude_disp.TabIndex = 8;
+            this.longitude_disp.TextChanged += new System.EventHandler(this.longitude_TextChanged);
             // 
             // connect_button
             // 
@@ -127,15 +131,15 @@
             this.Get_Port_2.Size = new System.Drawing.Size(71, 21);
             this.Get_Port_2.TabIndex = 19;
             // 
-            // locate
+            // locate_button
             // 
-            this.locate.Location = new System.Drawing.Point(253, 410);
-            this.locate.Name = "locate";
-            this.locate.Size = new System.Drawing.Size(75, 23);
-            this.locate.TabIndex = 21;
-            this.locate.Text = "Locate";
-            this.locate.UseVisualStyleBackColor = true;
-            this.locate.Click += new System.EventHandler(this.button1_Click);
+            this.locate_button.Location = new System.Drawing.Point(253, 410);
+            this.locate_button.Name = "locate_button";
+            this.locate_button.Size = new System.Drawing.Size(75, 23);
+            this.locate_button.TabIndex = 21;
+            this.locate_button.Text = "Locate";
+            this.locate_button.UseVisualStyleBackColor = true;
+            this.locate_button.Click += new System.EventHandler(this.button1_Click);
             // 
             // gauge_timer
             // 
@@ -281,6 +285,8 @@
             treeNode8,
             treeNode9,
             treeNode10});
+            this.treeView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.treeView1.RightToLeftLayout = true;
             this.treeView1.Scrollable = false;
             this.treeView1.Size = new System.Drawing.Size(204, 350);
             this.treeView1.TabIndex = 31;
@@ -294,6 +300,22 @@
             this.sat_img.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.sat_img.TabIndex = 32;
             this.sat_img.TabStop = false;
+            // 
+            // time_disp
+            // 
+            this.time_disp.Location = new System.Drawing.Point(245, 145);
+            this.time_disp.Name = "time_disp";
+            this.time_disp.ReadOnly = true;
+            this.time_disp.Size = new System.Drawing.Size(129, 20);
+            this.time_disp.TabIndex = 33;
+            // 
+            // battery_voltage
+            // 
+            this.battery_voltage.Location = new System.Drawing.Point(245, 208);
+            this.battery_voltage.Name = "battery_voltage";
+            this.battery_voltage.ReadOnly = true;
+            this.battery_voltage.Size = new System.Drawing.Size(129, 20);
+            this.battery_voltage.TabIndex = 34;
             // 
             // thrust_gauge
             // 
@@ -439,11 +461,32 @@
             this.speed_gauge.Text = "Speed";
             this.speed_gauge.Value = 0F;
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(182, 368);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 35;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(303, 366);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 36;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(974, 556);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.battery_voltage);
+            this.Controls.Add(this.time_disp);
             this.Controls.Add(this.sat_img);
             this.Controls.Add(this.cent_indicator);
             this.Controls.Add(this.zero_indicator);
@@ -452,12 +495,12 @@
             this.Controls.Add(this.al_disp);
             this.Controls.Add(this.th_disp);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.locate);
+            this.Controls.Add(this.locate_button);
             this.Controls.Add(this.Get_Port_2);
             this.Controls.Add(this.Get_Port_1);
             this.Controls.Add(this.connect_button);
-            this.Controls.Add(this.longitude);
-            this.Controls.Add(this.latitude);
+            this.Controls.Add(this.longitude_disp);
+            this.Controls.Add(this.latitude_disp);
             this.Controls.Add(this.maps_w);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.treeView1);
@@ -475,12 +518,12 @@
         #endregion
 
         private System.Windows.Forms.WebBrowser maps_w;
-        private System.Windows.Forms.TextBox latitude;
-        private System.Windows.Forms.TextBox longitude;
+        private System.Windows.Forms.TextBox latitude_disp;
+        private System.Windows.Forms.TextBox longitude_disp;
         private System.Windows.Forms.Button connect_button;
         private System.Windows.Forms.ComboBox Get_Port_1;
         private System.Windows.Forms.ComboBox Get_Port_2;
-        private System.Windows.Forms.Button locate;
+        private System.Windows.Forms.Button locate_button;
         private System.Windows.Forms.Timer gauge_timer;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.AGauge thrust_gauge;
@@ -497,6 +540,10 @@
         private System.Windows.Forms.Label cent_indicator;
         private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.PictureBox sat_img;
+        private System.Windows.Forms.TextBox time_disp;
+        private System.Windows.Forms.TextBox battery_voltage;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button button1;
     }
 }
 
