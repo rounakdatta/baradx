@@ -43,7 +43,6 @@
             System.Windows.Forms.AGaugeLabel aGaugeLabel1 = new System.Windows.Forms.AGaugeLabel();
             System.Windows.Forms.AGaugeLabel aGaugeLabel2 = new System.Windows.Forms.AGaugeLabel();
             System.Windows.Forms.AGaugeLabel aGaugeLabel3 = new System.Windows.Forms.AGaugeLabel();
-            this.maps_w = new System.Windows.Forms.WebBrowser();
             this.latitude_disp = new System.Windows.Forms.TextBox();
             this.longitude_disp = new System.Windows.Forms.TextBox();
             this.connect_button = new System.Windows.Forms.Button();
@@ -51,9 +50,6 @@
             this.Get_Port_2 = new System.Windows.Forms.ComboBox();
             this.gauge_timer = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.th_disp = new System.Windows.Forms.Label();
-            this.al_disp = new System.Windows.Forms.Label();
-            this.sp_disp = new System.Windows.Forms.Label();
             this.sat_img = new System.Windows.Forms.PictureBox();
             this.time_disp = new System.Windows.Forms.TextBox();
             this.battery_voltage = new System.Windows.Forms.TextBox();
@@ -64,57 +60,48 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.gmap = new GMap.NET.WindowsForms.GMapControl();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.thrust_gauge = new System.Windows.Forms.AGauge();
             this.altitude_gauge = new System.Windows.Forms.AGauge();
             this.speed_gauge = new System.Windows.Forms.AGauge();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sat_img)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // maps_w
-            // 
-            this.maps_w.AllowWebBrowserDrop = false;
-            this.maps_w.CausesValidation = false;
-            this.maps_w.Location = new System.Drawing.Point(5, 5);
-            this.maps_w.MinimumSize = new System.Drawing.Size(20, 20);
-            this.maps_w.Name = "maps_w";
-            this.maps_w.ScriptErrorsSuppressed = true;
-            this.maps_w.ScrollBarsEnabled = false;
-            this.maps_w.Size = new System.Drawing.Size(578, 545);
-            this.maps_w.TabIndex = 0;
-            this.maps_w.Url = new System.Uri("https://www.google.co.in/maps/@?api=1&map_action=map", System.UriKind.Absolute);
-            this.maps_w.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.maps_w_DocumentCompleted);
             // 
             // latitude_disp
             // 
-            this.latitude_disp.Location = new System.Drawing.Point(589, 529);
+            this.latitude_disp.Location = new System.Drawing.Point(524, 469);
             this.latitude_disp.Name = "latitude_disp";
+            this.latitude_disp.ReadOnly = true;
             this.latitude_disp.Size = new System.Drawing.Size(89, 20);
             this.latitude_disp.TabIndex = 7;
             this.latitude_disp.TextChanged += new System.EventHandler(this.latitude_TextChanged);
             // 
             // longitude_disp
             // 
-            this.longitude_disp.Location = new System.Drawing.Point(684, 529);
+            this.longitude_disp.Location = new System.Drawing.Point(619, 469);
             this.longitude_disp.Name = "longitude_disp";
+            this.longitude_disp.ReadOnly = true;
             this.longitude_disp.Size = new System.Drawing.Size(88, 20);
             this.longitude_disp.TabIndex = 8;
             this.longitude_disp.TextChanged += new System.EventHandler(this.longitude_TextChanged);
             // 
             // connect_button
             // 
-            this.connect_button.Location = new System.Drawing.Point(594, 243);
+            this.connect_button.Location = new System.Drawing.Point(674, 152);
             this.connect_button.Name = "connect_button";
-            this.connect_button.Size = new System.Drawing.Size(75, 23);
+            this.connect_button.Size = new System.Drawing.Size(33, 23);
             this.connect_button.TabIndex = 11;
-            this.connect_button.Text = "CONNECT";
+            this.connect_button.Text = "GO";
             this.connect_button.UseVisualStyleBackColor = true;
             this.connect_button.Click += new System.EventHandler(this.connect_button_Click);
             // 
             // Get_Port_1
             // 
             this.Get_Port_1.FormattingEnabled = true;
-            this.Get_Port_1.Location = new System.Drawing.Point(594, 174);
+            this.Get_Port_1.Location = new System.Drawing.Point(529, 153);
             this.Get_Port_1.Name = "Get_Port_1";
             this.Get_Port_1.Size = new System.Drawing.Size(71, 21);
             this.Get_Port_1.TabIndex = 12;
@@ -122,7 +109,7 @@
             // Get_Port_2
             // 
             this.Get_Port_2.FormattingEnabled = true;
-            this.Get_Port_2.Location = new System.Drawing.Point(594, 201);
+            this.Get_Port_2.Location = new System.Drawing.Point(602, 153);
             this.Get_Port_2.Name = "Get_Port_2";
             this.Get_Port_2.Size = new System.Drawing.Size(71, 21);
             this.Get_Port_2.TabIndex = 19;
@@ -140,78 +127,48 @@
             this.panel1.Controls.Add(this.thrust_gauge);
             this.panel1.Controls.Add(this.altitude_gauge);
             this.panel1.Controls.Add(this.speed_gauge);
-            this.panel1.Location = new System.Drawing.Point(594, 34);
+            this.panel1.Location = new System.Drawing.Point(529, 34);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(377, 127);
+            this.panel1.Size = new System.Drawing.Size(383, 117);
             this.panel1.TabIndex = 23;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            // 
-            // th_disp
-            // 
-            this.th_disp.AutoSize = true;
-            this.th_disp.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.th_disp.Location = new System.Drawing.Point(903, 116);
-            this.th_disp.Name = "th_disp";
-            this.th_disp.Size = new System.Drawing.Size(15, 13);
-            this.th_disp.TabIndex = 24;
-            this.th_disp.Text = "N";
-            // 
-            // al_disp
-            // 
-            this.al_disp.AutoSize = true;
-            this.al_disp.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.al_disp.Location = new System.Drawing.Point(772, 116);
-            this.al_disp.Name = "al_disp";
-            this.al_disp.Size = new System.Drawing.Size(21, 13);
-            this.al_disp.TabIndex = 25;
-            this.al_disp.Text = "km";
-            // 
-            // sp_disp
-            // 
-            this.sp_disp.AutoSize = true;
-            this.sp_disp.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.sp_disp.Location = new System.Drawing.Point(637, 116);
-            this.sp_disp.Name = "sp_disp";
-            this.sp_disp.Size = new System.Drawing.Size(33, 13);
-            this.sp_disp.TabIndex = 26;
-            this.sp_disp.Text = "kmph";
             // 
             // sat_img
             // 
             this.sat_img.Image = ((System.Drawing.Image)(resources.GetObject("sat_img.Image")));
-            this.sat_img.Location = new System.Drawing.Point(780, 516);
+            this.sat_img.Location = new System.Drawing.Point(726, 463);
             this.sat_img.Name = "sat_img";
-            this.sat_img.Size = new System.Drawing.Size(38, 26);
+            this.sat_img.Size = new System.Drawing.Size(51, 26);
             this.sat_img.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.sat_img.TabIndex = 32;
             this.sat_img.TabStop = false;
             // 
             // time_disp
             // 
-            this.time_disp.Location = new System.Drawing.Point(804, 8);
+            this.time_disp.Location = new System.Drawing.Point(570, 8);
             this.time_disp.Name = "time_disp";
             this.time_disp.ReadOnly = true;
-            this.time_disp.Size = new System.Drawing.Size(129, 20);
+            this.time_disp.Size = new System.Drawing.Size(60, 20);
             this.time_disp.TabIndex = 33;
             // 
             // battery_voltage
             // 
-            this.battery_voltage.Location = new System.Drawing.Point(804, 168);
+            this.battery_voltage.Location = new System.Drawing.Point(838, 7);
             this.battery_voltage.Name = "battery_voltage";
             this.battery_voltage.ReadOnly = true;
-            this.battery_voltage.Size = new System.Drawing.Size(129, 20);
+            this.battery_voltage.Size = new System.Drawing.Size(55, 20);
             this.battery_voltage.TabIndex = 34;
             // 
             // testpacket_field
             // 
-            this.testpacket_field.Location = new System.Drawing.Point(594, 461);
+            this.testpacket_field.Location = new System.Drawing.Point(529, 416);
             this.testpacket_field.Name = "testpacket_field";
             this.testpacket_field.Size = new System.Drawing.Size(162, 20);
             this.testpacket_field.TabIndex = 35;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(620, 487);
+            this.button1.Location = new System.Drawing.Point(555, 442);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(106, 23);
             this.button1.TabIndex = 36;
@@ -224,7 +181,7 @@
             this.test_packet.BackColor = System.Drawing.SystemColors.Control;
             this.test_packet.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.test_packet.ItemHeight = 34;
-            this.test_packet.Location = new System.Drawing.Point(809, 205);
+            this.test_packet.Location = new System.Drawing.Point(755, 152);
             this.test_packet.Name = "test_packet";
             treeNode1.Name = "139";
             treeNode1.Text = "Deploy success";
@@ -260,22 +217,22 @@
             this.test_packet.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.test_packet.RightToLeftLayout = true;
             this.test_packet.Scrollable = false;
-            this.test_packet.Size = new System.Drawing.Size(385, 350);
+            this.test_packet.Size = new System.Drawing.Size(161, 350);
             this.test_packet.TabIndex = 31;
             // 
             // logbox
             // 
-            this.logbox.Location = new System.Drawing.Point(594, 272);
+            this.logbox.Location = new System.Drawing.Point(529, 181);
             this.logbox.Multiline = true;
             this.logbox.Name = "logbox";
             this.logbox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.logbox.Size = new System.Drawing.Size(162, 183);
+            this.logbox.Size = new System.Drawing.Size(178, 229);
             this.logbox.TabIndex = 37;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(766, 12);
+            this.label1.Location = new System.Drawing.Point(532, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(33, 13);
             this.label1.TabIndex = 38;
@@ -284,20 +241,58 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(691, 171);
+            this.label2.Location = new System.Drawing.Point(780, 11);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(110, 13);
+            this.label2.Size = new System.Drawing.Size(57, 13);
             this.label2.TabIndex = 39;
-            this.label2.Text = "BATTERY VOLTAGE";
+            this.label2.Text = "BATTERY";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(939, 172);
+            this.label3.Location = new System.Drawing.Point(895, 11);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(14, 13);
             this.label3.TabIndex = 40;
             this.label3.Text = "V";
+            // 
+            // gmap
+            // 
+            this.gmap.AutoSize = true;
+            this.gmap.Bearing = 0F;
+            this.gmap.CanDragMap = false;
+            this.gmap.EmptyTileColor = System.Drawing.Color.Navy;
+            this.gmap.Enabled = false;
+            this.gmap.GrayScaleMode = false;
+            this.gmap.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
+            this.gmap.LevelsKeepInMemmory = 5;
+            this.gmap.Location = new System.Drawing.Point(4, 4);
+            this.gmap.MarkersEnabled = true;
+            this.gmap.MaxZoom = 18;
+            this.gmap.MinZoom = 0;
+            this.gmap.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionWithoutCenter;
+            this.gmap.Name = "gmap";
+            this.gmap.NegativeMode = false;
+            this.gmap.PolygonsEnabled = true;
+            this.gmap.RetryLoadTile = 0;
+            this.gmap.RoutesEnabled = true;
+            this.gmap.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
+            this.gmap.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
+            this.gmap.ShowTileGridLines = false;
+            this.gmap.Size = new System.Drawing.Size(515, 487);
+            this.gmap.TabIndex = 41;
+            this.gmap.Zoom = 0D;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(664, 1);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(114, 33);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 42;
+            this.pictureBox1.TabStop = false;
             // 
             // thrust_gauge
             // 
@@ -307,15 +302,16 @@
             this.thrust_gauge.BaseArcStart = 135;
             this.thrust_gauge.BaseArcSweep = 270;
             this.thrust_gauge.BaseArcWidth = 2;
-            this.thrust_gauge.Center = new System.Drawing.Point(60, 60);
+            this.thrust_gauge.Center = new System.Drawing.Point(64, 64);
+            this.thrust_gauge.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             aGaugeLabel1.Color = System.Drawing.SystemColors.WindowText;
             aGaugeLabel1.Name = "Thrust";
             aGaugeLabel1.Position = new System.Drawing.Point(45, 100);
             aGaugeLabel1.Text = "Thrust";
             this.thrust_gauge.GaugeLabels.Add(aGaugeLabel1);
-            this.thrust_gauge.Location = new System.Drawing.Point(253, 2);
-            this.thrust_gauge.MaxValue = 400F;
-            this.thrust_gauge.MinValue = -100F;
+            this.thrust_gauge.Location = new System.Drawing.Point(251, -2);
+            this.thrust_gauge.MaxValue = 3200F;
+            this.thrust_gauge.MinValue = 0F;
             this.thrust_gauge.Name = "thrust_gauge";
             this.thrust_gauge.NeedleColor1 = System.Windows.Forms.AGaugeNeedleColor.Gray;
             this.thrust_gauge.NeedleColor2 = System.Drawing.Color.DimGray;
@@ -329,7 +325,7 @@
             this.thrust_gauge.ScaleLinesMajorColor = System.Drawing.SystemColors.Control;
             this.thrust_gauge.ScaleLinesMajorInnerRadius = 40;
             this.thrust_gauge.ScaleLinesMajorOuterRadius = 35;
-            this.thrust_gauge.ScaleLinesMajorStepValue = 50F;
+            this.thrust_gauge.ScaleLinesMajorStepValue = 300F;
             this.thrust_gauge.ScaleLinesMajorWidth = 2;
             this.thrust_gauge.ScaleLinesMinorColor = System.Drawing.SystemColors.Desktop;
             this.thrust_gauge.ScaleLinesMinorInnerRadius = 40;
@@ -338,11 +334,11 @@
             this.thrust_gauge.ScaleLinesMinorWidth = 1;
             this.thrust_gauge.ScaleNumbersColor = System.Drawing.Color.Black;
             this.thrust_gauge.ScaleNumbersFormat = null;
-            this.thrust_gauge.ScaleNumbersRadius = 52;
+            this.thrust_gauge.ScaleNumbersRadius = 53;
             this.thrust_gauge.ScaleNumbersRotation = 0;
             this.thrust_gauge.ScaleNumbersStartScaleLine = 0;
             this.thrust_gauge.ScaleNumbersStepScaleLines = 1;
-            this.thrust_gauge.Size = new System.Drawing.Size(123, 119);
+            this.thrust_gauge.Size = new System.Drawing.Size(142, 119);
             this.thrust_gauge.TabIndex = 25;
             this.thrust_gauge.Text = "Thrust";
             this.thrust_gauge.Value = 0F;
@@ -356,14 +352,15 @@
             this.altitude_gauge.BaseArcSweep = 270;
             this.altitude_gauge.BaseArcWidth = 2;
             this.altitude_gauge.Center = new System.Drawing.Point(60, 60);
+            this.altitude_gauge.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             aGaugeLabel2.Color = System.Drawing.SystemColors.WindowText;
             aGaugeLabel2.Name = "Altitude";
             aGaugeLabel2.Position = new System.Drawing.Point(45, 100);
             aGaugeLabel2.Text = "Altitude";
             this.altitude_gauge.GaugeLabels.Add(aGaugeLabel2);
-            this.altitude_gauge.Location = new System.Drawing.Point(124, 2);
-            this.altitude_gauge.MaxValue = 400F;
-            this.altitude_gauge.MinValue = -100F;
+            this.altitude_gauge.Location = new System.Drawing.Point(126, -3);
+            this.altitude_gauge.MaxValue = 100F;
+            this.altitude_gauge.MinValue = 0F;
             this.altitude_gauge.Name = "altitude_gauge";
             this.altitude_gauge.NeedleColor1 = System.Windows.Forms.AGaugeNeedleColor.Gray;
             this.altitude_gauge.NeedleColor2 = System.Drawing.Color.DimGray;
@@ -377,7 +374,7 @@
             this.altitude_gauge.ScaleLinesMajorColor = System.Drawing.SystemColors.Control;
             this.altitude_gauge.ScaleLinesMajorInnerRadius = 40;
             this.altitude_gauge.ScaleLinesMajorOuterRadius = 35;
-            this.altitude_gauge.ScaleLinesMajorStepValue = 50F;
+            this.altitude_gauge.ScaleLinesMajorStepValue = 10F;
             this.altitude_gauge.ScaleLinesMajorWidth = 2;
             this.altitude_gauge.ScaleLinesMinorColor = System.Drawing.SystemColors.Desktop;
             this.altitude_gauge.ScaleLinesMinorInnerRadius = 40;
@@ -390,7 +387,7 @@
             this.altitude_gauge.ScaleNumbersRotation = 0;
             this.altitude_gauge.ScaleNumbersStartScaleLine = 0;
             this.altitude_gauge.ScaleNumbersStepScaleLines = 1;
-            this.altitude_gauge.Size = new System.Drawing.Size(123, 119);
+            this.altitude_gauge.Size = new System.Drawing.Size(150, 126);
             this.altitude_gauge.TabIndex = 24;
             this.altitude_gauge.Text = "Altitude";
             this.altitude_gauge.Value = 0F;
@@ -404,14 +401,15 @@
             this.speed_gauge.BaseArcSweep = 270;
             this.speed_gauge.BaseArcWidth = 2;
             this.speed_gauge.Center = new System.Drawing.Point(60, 60);
+            this.speed_gauge.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             aGaugeLabel3.Color = System.Drawing.SystemColors.WindowText;
             aGaugeLabel3.Name = "Speed";
             aGaugeLabel3.Position = new System.Drawing.Point(45, 100);
             aGaugeLabel3.Text = "Speed";
             this.speed_gauge.GaugeLabels.Add(aGaugeLabel3);
-            this.speed_gauge.Location = new System.Drawing.Point(-1, 4);
-            this.speed_gauge.MaxValue = 400F;
-            this.speed_gauge.MinValue = -100F;
+            this.speed_gauge.Location = new System.Drawing.Point(4, -2);
+            this.speed_gauge.MaxValue = 100F;
+            this.speed_gauge.MinValue = 0F;
             this.speed_gauge.Name = "speed_gauge";
             this.speed_gauge.NeedleColor1 = System.Windows.Forms.AGaugeNeedleColor.Gray;
             this.speed_gauge.NeedleColor2 = System.Drawing.Color.DimGray;
@@ -425,7 +423,7 @@
             this.speed_gauge.ScaleLinesMajorColor = System.Drawing.SystemColors.Control;
             this.speed_gauge.ScaleLinesMajorInnerRadius = 40;
             this.speed_gauge.ScaleLinesMajorOuterRadius = 35;
-            this.speed_gauge.ScaleLinesMajorStepValue = 50F;
+            this.speed_gauge.ScaleLinesMajorStepValue = 10F;
             this.speed_gauge.ScaleLinesMajorWidth = 2;
             this.speed_gauge.ScaleLinesMinorColor = System.Drawing.SystemColors.Desktop;
             this.speed_gauge.ScaleLinesMinorInnerRadius = 40;
@@ -438,7 +436,7 @@
             this.speed_gauge.ScaleNumbersRotation = 0;
             this.speed_gauge.ScaleNumbersStartScaleLine = 0;
             this.speed_gauge.ScaleNumbersStepScaleLines = 1;
-            this.speed_gauge.Size = new System.Drawing.Size(123, 119);
+            this.speed_gauge.Size = new System.Drawing.Size(138, 122);
             this.speed_gauge.TabIndex = 23;
             this.speed_gauge.Text = "Speed";
             this.speed_gauge.Value = 0F;
@@ -447,7 +445,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(974, 556);
+            this.ClientSize = new System.Drawing.Size(918, 493);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.gmap);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -457,21 +457,19 @@
             this.Controls.Add(this.battery_voltage);
             this.Controls.Add(this.time_disp);
             this.Controls.Add(this.sat_img);
-            this.Controls.Add(this.sp_disp);
-            this.Controls.Add(this.al_disp);
-            this.Controls.Add(this.th_disp);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.Get_Port_2);
             this.Controls.Add(this.Get_Port_1);
             this.Controls.Add(this.connect_button);
             this.Controls.Add(this.longitude_disp);
             this.Controls.Add(this.latitude_disp);
-            this.Controls.Add(this.maps_w);
             this.Controls.Add(this.test_packet);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "BARADX";
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.sat_img)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -479,7 +477,6 @@
 
         #endregion
 
-        private System.Windows.Forms.WebBrowser maps_w;
         private System.Windows.Forms.TextBox latitude_disp;
         private System.Windows.Forms.TextBox longitude_disp;
         private System.Windows.Forms.Button connect_button;
@@ -490,9 +487,6 @@
         private System.Windows.Forms.AGauge thrust_gauge;
         private System.Windows.Forms.AGauge altitude_gauge;
         private System.Windows.Forms.AGauge speed_gauge;
-        private System.Windows.Forms.Label th_disp;
-        private System.Windows.Forms.Label al_disp;
-        private System.Windows.Forms.Label sp_disp;
         private System.Windows.Forms.PictureBox sat_img;
         private System.Windows.Forms.TextBox time_disp;
         private System.Windows.Forms.TextBox battery_voltage;
@@ -503,6 +497,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private GMap.NET.WindowsForms.GMapControl gmap;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

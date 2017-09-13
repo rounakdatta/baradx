@@ -9,3 +9,18 @@ C:\Users\246 Bangur Park\Documents\Visual Studio 2010\Projects\BARADX\BARADX\obj
 C:\Users\246 Bangur Park\Documents\Visual Studio 2010\Projects\BARADX\BARADX\bin\Debug\Microsoft.Maps.MapControl.WPF.dll
 C:\Users\246 Bangur Park\Documents\Visual Studio 2010\Projects\BARADX\BARADX\bin\Debug\Microsoft.Maps.MapControl.WPF.xml
 C:\Users\246 Bangur Park\Documents\Visual Studio 2010\Projects\BARADX\BARADX\obj\x86\Debug\BARADX.csprojResolveAssemblyReference.cache
+C:\Users\246 Bangur Park\Desktop\baradx-master\BARADX\obj\x86\Debug\SPACEX.exe
+C:\Users\246 Bangur Park\Desktop\baradx-master\BARADX\obj\x86\Debug\SPACEX.pdb
+C:\Users\246 Bangur Park\Desktop\baradx-master\BARADX\bin\Debug\SPACEX.exe
+C:\Users\246 Bangur Park\Desktop\baradx-master\BARADX\bin\Debug\SPACEX.pdb
+C:\Users\246 Bangur Park\Desktop\baradx-master\BARADX\bin\Debug\GMap.NET.Core.dll
+C:\Users\246 Bangur Park\Desktop\baradx-master\BARADX\bin\Debug\GMap.NET.WindowsForms.dll
+C:\Users\246 Bangur Park\Desktop\baradx-master\BARADX\bin\Debug\Microsoft.Maps.MapControl.WPF.dll
+C:\Users\246 Bangur Park\Desktop\baradx-master\BARADX\bin\Debug\GMap.NET.Core.xml
+C:\Users\246 Bangur Park\Desktop\baradx-master\BARADX\bin\Debug\GMap.NET.WindowsForms.xml
+C:\Users\246 Bangur Park\Desktop\baradx-master\BARADX\bin\Debug\Microsoft.Maps.MapControl.WPF.xml
+C:\Users\246 Bangur Park\Desktop\baradx-master\BARADX\obj\x86\Debug\BARADX.csprojResolveAssemblyReference.cache
+C:\Users\246 Bangur Park\Desktop\baradx-master\BARADX\obj\x86\Debug\System.Windows.Forms.AGauge.resources
+C:\Users\246 Bangur Park\Desktop\baradx-master\BARADX\obj\x86\Debug\WindowsFormsApplication1.Form1.resources
+C:\Users\246 Bangur Park\Desktop\baradx-master\BARADX\obj\x86\Debug\WindowsFormsApplication1.Properties.Resources.resources
+C:\Users\246 Bangur Park\Desktop\baradx-master\BARADX\obj\x86\Debug\BARADX.csproj.GenerateResource.Cache

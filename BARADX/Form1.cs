@@ -8,6 +8,10 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO.Ports;
 using System.Threading;
+using GMap.NET;
+using GMap.NET.WindowsForms;
+using GMap.NET.WindowsForms.Markers;
+using GMap.NET.MapProviders;
 
 namespace WindowsFormsApplication1
 {
@@ -45,11 +49,29 @@ namespace WindowsFormsApplication1
             InitializeComponent();
             Get_Port_1.Items.AddRange(SerialPort.GetPortNames());
             Get_Port_2.Items.AddRange(SerialPort.GetPortNames());
+            sat_img.Visible = false;
+
+            gmap.MapProvider = GMap.NET.MapProviders.GoogleMapProvider.Instance;
+            GMap.NET.GMaps.Instance.Mode = GMap.NET.AccessMode.ServerAndCache;
+            gmap.Zoom = 1;
+            gmap.ShowCenter = false;
+            //showpin(22, 88);
+        }
+
+        void showpin(float a, float b)
+        {
+            GMapOverlay markers = new GMapOverlay("markers");
+            GMapMarker marker = new GMarkerGoogle(
+                    new GMap.NET.PointLatLng(a, b),
+                    new Bitmap(Properties.Resources.old));
+                    //GMarkerGoogleType.blue_dot);
+            gmap.Overlays.Add(markers);
+            markers.Markers.Add(marker);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            maps_w.Url = new System.Uri("http://maps.google.com/maps?q=" + latitude_disp.Text + "," + longitude_disp.Text);
+            //maps_w.Url = new System.Uri("http://maps.google.com/maps?q=" + latitude_disp.Text + "," + longitude_disp.Text);
         }
 
         
@@ -68,6 +90,14 @@ namespace WindowsFormsApplication1
                 sat_img.Location = new Point(x, y - 34);*/
         }
 
+        string gettime(int seconds)
+        {
+            int min = seconds / 60;
+            seconds = seconds % 60;
+            string timestr = min.ToString("00") + ":" + seconds.ToString("00");
+            return timestr;
+        }
+
         private void parsePacket(string idata, int sizex)
         {
             String sign;
@@ -75,54 +105,61 @@ namespace WindowsFormsApplication1
             {
                 logbox.AppendText("A1 : " + idata + Environment.NewLine);
                 sign = (idata[3] == '0') ? "+" : "-";
-                time_disp.Text = sign + idata[4].ToString() + idata[5].ToString() + idata[6].ToString();
+                time_disp.Text = sign + gettime(int.Parse(idata[4].ToString() + idata[5].ToString() + idata[6].ToString()));
 
                 int velocity = Int32.Parse(idata[12].ToString() + idata[13].ToString() + idata[14].ToString() + idata[15].ToString());
                 velocity = (idata[11] == '0') ? velocity : -velocity;
-                speed_gauge.Value = velocity;
+                //y = ((e .^ log2(x)) ./ x) * 1.4712
+                double velocityplot = Math.Pow(Math.E, Math.Log(velocity, 2))*1.4712/velocity;
+                speed_gauge.Value = float.Parse(velocityplot.ToString());
+                //speedbox.Text = velocityplot.ToString();
 
                 int altitude = Int32.Parse(idata[17].ToString() + idata[18].ToString() + idata[19].ToString() + idata[20].ToString() + idata[21].ToString() + idata[22].ToString() + idata[23].ToString());
                 altitude = (idata[16] == '0') ? altitude : -altitude;
-                altitude_gauge.Value = altitude;
+                double altitudeplot = Math.Pow(Math.E, Math.Log(altitude, 2)) * 0.1365 / altitude;
+                altitude_gauge.Value = float.Parse(altitudeplot.ToString());
+                //altitudebox.Text = altitudeplot.ToString();
 
                 int thrust = Int32.Parse(idata[25].ToString() + idata[26].ToString() + idata[27].ToString() + idata[28].ToString());
                 thrust = (idata[24] == '0') ? thrust : -thrust;
                 thrust_gauge.Value = thrust;
+                //thrustbox.Text = thrust.ToString();
 
                 int x = sat_img.Location.X;
                 int y = sat_img.Location.Y;
                 String str = idata[8].ToString() + idata[9].ToString() + idata[10].ToString();
+                sat_img.Visible = true;
                 switch (str)
                 {
                     case "001":
-                        sat_img.Location = new Point(x, y - 34);
+                        sat_img.Location = new Point(x, 463);
                         break;
                     case "009":
-                        sat_img.Location = new Point(x, y - 34);
+                        sat_img.Location = new Point(x, 429);
                         break;
                     case "013":
-                        sat_img.Location = new Point(x, y - 34);
+                        sat_img.Location = new Point(x, 395);
                         break;
                     case "048":
-                        sat_img.Location = new Point(x, y - 34);
+                        sat_img.Location = new Point(x, 361);
                         break;
                     case "088":
-                        sat_img.Location = new Point(x, y - 34);
+                        sat_img.Location = new Point(x, 327);
                         break;
                     case "091":
-                        sat_img.Location = new Point(x, y - 34);
+                        sat_img.Location = new Point(x, 293);
                         break;
                     case "103":
-                        sat_img.Location = new Point(x, y - 34);
+                        sat_img.Location = new Point(x, 259);
                         break;
                     case "106":
-                        sat_img.Location = new Point(x, y - 34);
+                        sat_img.Location = new Point(x, 225);
                         break;
                     case "123":
-                        sat_img.Location = new Point(x, y - 34);
+                        sat_img.Location = new Point(x, 191);
                         break;
                     case "139":
-                        sat_img.Location = new Point(x, y - 34);
+                        sat_img.Location = new Point(x, 157);
                         break;
                 }
 
@@ -140,7 +177,8 @@ namespace WindowsFormsApplication1
                 float longitudev = float.Parse(sign + idata[11].ToString() + idata[12].ToString() + idata[13].ToString() + "." + idata[14].ToString() + idata[15].ToString() + idata[16].ToString());
                 longitude_disp.Text = longitudev.ToString();
 
-                maps_w.Url = new System.Uri("http://maps.google.com/maps?q=" + latitude_disp.Text + "," + longitude_disp.Text);
+                showpin(latitudev, longitudev);
+                //maps_w.Url = new System.Uri("http://maps.google.com/maps?q=" + latitude_disp.Text + "," + longitude_disp.Text);
 
             }
         }
@@ -238,8 +276,12 @@ namespace WindowsFormsApplication1
             if(testpacket_field.Text.Length == 36)
                 parsePacket(testpacket_field.Text, 36);
             if (testpacket_field.Text.Length == 19)
+            {
+                //float latitudeval = float.Parse(latitude_disp.Text);
+                //float longitudeval = float.Parse(longitude_disp.Text);
+                //showpin(latitudeval, longitudeval);
                 parsePacket(testpacket_field.Text, 19);
+            }
         }
-
     }
 }
